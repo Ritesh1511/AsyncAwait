@@ -1,0 +1,14 @@
+/Users/riteshkaushik/Desktop/AsyncAwait/AsyncAwait/obj/Debug/net8.0/AsyncAwait.GeneratedMSBuildEditorConfig.editorconfig
+/Users/riteshkaushik/Desktop/AsyncAwait/AsyncAwait/obj/Debug/net8.0/AsyncAwait.AssemblyInfoInputs.cache
+/Users/riteshkaushik/Desktop/AsyncAwait/AsyncAwait/obj/Debug/net8.0/AsyncAwait.AssemblyInfo.cs
+/Users/riteshkaushik/Desktop/AsyncAwait/AsyncAwait/obj/Debug/net8.0/AsyncAwait.csproj.CoreCompileInputs.cache
+/Users/riteshkaushik/Desktop/AsyncAwait/AsyncAwait/bin/Debug/net8.0/AsyncAwait
+/Users/riteshkaushik/Desktop/AsyncAwait/AsyncAwait/bin/Debug/net8.0/AsyncAwait.deps.json
+/Users/riteshkaushik/Desktop/AsyncAwait/AsyncAwait/bin/Debug/net8.0/AsyncAwait.runtimeconfig.json
+/Users/riteshkaushik/Desktop/AsyncAwait/AsyncAwait/bin/Debug/net8.0/AsyncAwait.dll
+/Users/riteshkaushik/Desktop/AsyncAwait/AsyncAwait/bin/Debug/net8.0/AsyncAwait.pdb
+/Users/riteshkaushik/Desktop/AsyncAwait/AsyncAwait/obj/Debug/net8.0/AsyncAwait.dll
+/Users/riteshkaushik/Desktop/AsyncAwait/AsyncAwait/obj/Debug/net8.0/refint/AsyncAwait.dll
+/Users/riteshkaushik/Desktop/AsyncAwait/AsyncAwait/obj/Debug/net8.0/AsyncAwait.pdb
+/Users/riteshkaushik/Desktop/AsyncAwait/AsyncAwait/obj/Debug/net8.0/AsyncAwait.genruntimeconfig.cache
+/Users/riteshkaushik/Desktop/AsyncAwait/AsyncAwait/obj/Debug/net8.0/ref/AsyncAwait.dll
