@@ -111,6 +111,19 @@ Even if you add Task.Delay(1000).Wait(), it doesn’t automatically extract the 
 
 ## ⏳ Task.Delay Comparison
 
+```
+ public static void Main2()
+    {
+        Console.WriteLine("Starting...");
+        Task.Delay(1000);
+        Console.WriteLine("Done");
+        //Task.Delay uses the OS/timer to track time asynchronously; main thread is free and not blocked.
+    }
+    ```
+**Task.Delay itself doesn’t block; without await or .Wait(), a non-async method will just keep running**
+
+**.Wait() pauses the current thread until the task completes**
+
 ### ❌ Task.Delay without `await` — no effect
 
 ```csharp
@@ -245,6 +258,7 @@ public static void Search(string input)
 - `Program.cs` – Demo code with all examples
 - `Readme.md` – You're here 🙂
 - `.csproj` – Project metadata
+
 
 
 
