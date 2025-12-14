@@ -14,6 +14,43 @@ Method starts on main thread
 - Either of these must be used to recieve async response.
 **This way main thread never blocked and always there to cater ui events or idle in threadpool.**
 
+##To mark a method async
+**async method can only return Task or Task<T>**
+**Task returns no value and Task<T> is generic and returns the type of placeholder**
+
+```
+public async Task WaitAndPrintAsync()
+{
+    await Task.Delay(1000); // wait 1 second
+    Console.WriteLine("Done waiting!");
+}
+```
+
+```
+public async Task<string> GetGreetingAsync()
+{
+    await Task.Delay(500); // simulate async work
+    return "Hello, async!";
+}
+
+```
+```await Task1Async(); // wait for just one task```
+```
+var t1 = Task1Async();
+var t2 = Task2Async();
+await Task.WhenAll(t1, t2); // wait until all complete
+```
+```
+var t1 = Task1Async();
+var t2 = Task2Async();
+var first = await Task.WhenAny(t1, t2); // resumes when the first finishes
+```
+```
+await Task.Delay(1000); // wait 1 second without blocking
+```
+
+
+
 ## 🔁 Blocking vs Non-Blocking
 
 ### ❌ Blocking example (bad for UI/server apps)
@@ -189,5 +226,6 @@ public static void Search(string input)
 - `Program.cs` – Demo code with all examples
 - `Readme.md` – You're here 🙂
 - `.csproj` – Project metadata
+
 
 
