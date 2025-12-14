@@ -112,17 +112,20 @@ Even if you add Task.Delay(1000).Wait(), it doesn’t automatically extract the 
 ## ⏳ Task.Delay Comparison
 
 ```
- public static void Main2()
+public static void Main2()
     {
         Console.WriteLine("Starting...");
         Task.Delay(1000);
         Console.WriteLine("Done");
         //Task.Delay uses the OS/timer to track time asynchronously; main thread is free and not blocked.
     }
-    ```
+
+```
 **Task.Delay itself doesn’t block; without await or .Wait(), a non-async method will just keep running**
 
 **.Wait() pauses the current thread until the task completes**
+
+### Task.Delay() alone - without await or wait() has no use : await free the main thread / wait blocks the current thread.
 
 ### ❌ Task.Delay without `await` — no effect
 
@@ -130,7 +133,7 @@ Even if you add Task.Delay(1000).Wait(), it doesn’t automatically extract the 
 public static async Task Main4()
 {
     Console.WriteLine("Starting..."); 
-    Task.Delay(120); // No effect
+    Task.Delay(120); // No effect Task.Delay uses the OS/timer to track time asynchronously; main thread is free and not blocked.
     Console.WriteLine("Finished");
 }
 ```
@@ -153,11 +156,66 @@ public static async Task Main5()
 - `await Task.Delay(...)` does not block a thread — uses a timer internally.
 - Resumes execution after timeout.
 
+
+### There is catch 
+### There is catch
+### There is catch
+
+```
+namespace asyncawait;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Main2();
+    }
+    public static async Task Main2()
+    {
+        Console.WriteLine("Starting..."); //Only this will be printed 
+         await Task.Delay(100);          //main thread is free and returns to the caller 
+        Console.WriteLine("Done");
+    }
+
+}
+```
+### At await, the main thread returns to the caller while the async operation runs, and the method resumes later on a thread when the task completes.
+
+
+### So to print all caller must await.
+
+```
+namespace asyncawait;
+
+class Program
+{
+    static async Task Main(string[] args)
+    {
+        await  Main2();
+    }
+    public static async Task Main2()
+    {
+        Console.WriteLine("Starting...");
+        await Task.Delay(1000);
+        Console.WriteLine("Done");
+    }
+
+}
+```
+
+
+### There is catch 
+### There is catch
+### There is catch
+
+
+
 ---
 
 ### ❌ Task.Delay().Wait() — blocking
 
-```csharp
+```
+csharp
 public static void Main6()
 {
     Console.WriteLine("Starting...");
@@ -169,7 +227,13 @@ public static void Main6()
 - `Wait()` is synchronous and blocks the current thread.
 - Should be avoided in async applications.
 
+
+
+
 ---
+
+
+
 
 ## 📂 Parallel File Reads
 
@@ -258,6 +322,7 @@ public static void Search(string input)
 - `Program.cs` – Demo code with all examples
 - `Readme.md` – You're here 🙂
 - `.csproj` – Project metadata
+
 
 
 
