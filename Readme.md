@@ -311,9 +311,10 @@ public static void Search(string input)
 ### File.ReadAllTextAsync → uses OS async I/O, main/thread-pool threads are mostly free
 
 
-### Task type                     	         How to run
-I/O-bound (network, disk, DB)      	     await asyncMethod()
-CPU-bound (computation, heavy loops)	 Task.Run(() => work())
+### Task type-----------------How to run
+I/O-bound (network, disk, DB) -------- await asyncMethod()
+
+CPU-bound (computation, heavy loops)--------Task.Run(() => work())
 
 ---
 
@@ -331,6 +332,7 @@ CPU-bound (computation, heavy loops)	 Task.Run(() => work())
 - `Program.cs` – Demo code with all examples
 - `Readme.md` – You're here 🙂
 - `.csproj` – Project metadata
+
 
 
 
