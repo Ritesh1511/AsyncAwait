@@ -10,9 +10,9 @@ Method starts on main thread
 - It will notify .NET runtime.
 - Now if we don't used await or .result main thread will (exit the program in console application) and (request ends before async work finishes).
 - **await** - still await frees the thread; the OS independently handles the I/O; no thread is “given” to the OS.
-- .result - it will block main thread.
+- **.result** - it will block main thread.
 - Either of these must be used to recieve async response.
-**-This way main thread never blocked and always there to cater ui events or idle in threadpool **
+**This way main thread never blocked and always there to cater ui events or idle in threadpool.**
 
 ## 🔁 Blocking vs Non-Blocking
 
@@ -189,4 +189,5 @@ public static void Search(string input)
 - `Program.cs` – Demo code with all examples
 - `Readme.md` – You're here 🙂
 - `.csproj` – Project metadata
+
 
