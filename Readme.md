@@ -306,6 +306,15 @@ public static void Search(string input)
 }
 ```
 
+### Task.Run → uses thread-pool threads, CPU executes code
+
+### File.ReadAllTextAsync → uses OS async I/O, main/thread-pool threads are mostly free
+
+
+### Task type                     	         How to run
+I/O-bound (network, disk, DB)      	     await asyncMethod()
+CPU-bound (computation, heavy loops)	 Task.Run(() => work())
+
 ---
 
 ## 🧠 Summary
@@ -322,6 +331,7 @@ public static void Search(string input)
 - `Program.cs` – Demo code with all examples
 - `Readme.md` – You're here 🙂
 - `.csproj` – Project metadata
+
 
 
 
