@@ -51,7 +51,7 @@ await Task.Delay(1000); // wait 1 second without blocking
 
 
 
-## 🔁 Blocking vs Non-Blocking
+## 🔁 .Result vs await
 
 ### ❌ Blocking example (bad for UI/server apps)
 
@@ -60,7 +60,7 @@ public static void Main2()
 {
     Console.WriteLine("Starting...");
     var content = File.ReadAllTextAsync("/Users/riteshkaushik/unused_files.txt");
-    Console.WriteLine(content.Result); // Blocks thread!
+    Console.WriteLine(content.Result); // Blocks thread! -- Main thread blocked here
     Console.WriteLine("Done");
 }
 ```
@@ -82,12 +82,29 @@ public static async Task Main3()
     Console.WriteLine("Done");
 }
 ```
+**
+await unwraps the Task and gives the result automatically in async methods;
+await unwraps the Task and gives the result automatically in async methods;
+await unwraps the Task and gives the result automatically in async methods;**
 
 - Uses `await` — does **not block** the main thread.
 - Async I/O operation is handled by the OS.
 - OS notifies the .NET runtime when complete via callback.
 - Main thread is free to serve other tasks (scalable, responsive).
 
+**
+File.ReadAllTextAsync is asynchronous and handled by OS I/O, not the main thread.
+
+It immediately returns a Task<string>, not the actual file content.
+
+content holds the Task, not the string, so:
+
+Console.WriteLine(content); 
+
+
+prints something like System.Threading.Tasks.Task — not the file content.
+
+Even if you add Task.Delay(1000).Wait(), it doesn’t automatically extract the result from the Task. The main thread just waits 1 second, but content is still a Task.**
 ---
 
 ## ⏳ Task.Delay Comparison
@@ -226,6 +243,7 @@ public static void Search(string input)
 - `Program.cs` – Demo code with all examples
 - `Readme.md` – You're here 🙂
 - `.csproj` – Project metadata
+
 
 
 
