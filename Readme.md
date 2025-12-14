@@ -1,24 +1,18 @@
-# 📘 AsyncAwait in C#
+Async/await is a C# feature that lets us write asynchronous code without blocking the current thread.
+It allows long-running operations (like file or data access) to run in the background using async keyword.
+While await pauses the method (not the thread) until the operation completes, then continues execution.
 
-This project demonstrates how asynchronous programming works in C# using `async`, `await`, `Task.Run`, and `Task.WhenAll`.
-
-It explains:
-- How the OS and .NET handle async I/O
-- The difference between blocking and non-blocking code
-- How thread pool threads work in background execution
-
----
-
-## 🏁 Entry Point
-
-```csharp
-static async Task Main(string[] args)
-{
-    await Main8();
-}
-```
-
----
+Method starts on main thread
+**Hits await ReadFileAsync()** 
+- async (Code): Now this Read request sent to OS I/O
+- Main thread is freed (What does main thread do then? **UI app**: Main thread keeps processing UI events (clicks, paint, input). **ASP.NET / server**: Thread goes back to thread pool to serve other requests. or remain idle.)
+- OS finishes I/O operations
+- It will notify .NET runtime.
+- Now if we don't used await or .result main thread will (exit the program in console application) and (request ends before async work finishes).
+- **await** - still await frees the thread; the OS independently handles the I/O; no thread is “given” to the OS.
+- .result - it will block main thread.
+- Either of these must be used to recieve async response.
+**-This way main thread never blocked and always there to cater ui events or idle in threadpool **
 
 ## 🔁 Blocking vs Non-Blocking
 
@@ -195,3 +189,4 @@ public static void Search(string input)
 - `Program.cs` – Demo code with all examples
 - `Readme.md` – You're here 🙂
 - `.csproj` – Project metadata
+
