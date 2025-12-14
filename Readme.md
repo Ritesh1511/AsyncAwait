@@ -105,6 +105,8 @@ Console.WriteLine(content);
 prints something like System.Threading.Tasks.Task — not the file content.
 
 Even if you add Task.Delay(1000).Wait(), it doesn’t automatically extract the result from the Task. The main thread just waits 1 second, but content is still a Task.**
+
+
 ---
 
 ## ⏳ Task.Delay Comparison
@@ -243,6 +245,7 @@ public static void Search(string input)
 - `Program.cs` – Demo code with all examples
 - `Readme.md` – You're here 🙂
 - `.csproj` – Project metadata
+
 
 
 
